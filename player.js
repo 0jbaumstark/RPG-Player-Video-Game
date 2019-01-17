@@ -1,6 +1,6 @@
 //generic stats object
 
-let p1Name = "";
+let p1Name = "Krackan";
 
 let p1Stats = {
   hp: 175,
@@ -10,7 +10,7 @@ let p1Stats = {
   sp: 60
 }
 
-let p2Name = "";
+let p2Name = "Hammerhead";
 
 let p2Stats = {
   hp: 125,
@@ -18,18 +18,65 @@ let p2Stats = {
   atk: 80,
   def: 40,
   sp: 30
+
+
+  //not finsihed
+
+  let p1battle = {
+
+  attack: function(mv){
+    if(mv === 1){
+      return this.moves.punch(); 
+    }
+    else if(mv === 2){
+      return this.moves.other();
+    }
+  },
+  defend: function(atkmv){
+    let rawDamage = atkmv - this.stats.def;
+    this.stats.hp = this.stats.hp - rawDamage;
+    if(this.stats.hp < 0){
+      this.stats.hp = 0;
+    }
+  }
+
 }
 
-let battle = {
-
-  attack: function(){},
-  defend: function(){}
-
+let physical = {
+  razorPunch: function(){
+    let baseDamage = this.stats.atk*0.75 
+    let bonus = 0.5*this.stats.atk*Math.random();
+    return baseDamage + bonus;
+  },
+  charge: function(){
+    let pain = Math.random();
+    let bonus = 0.5*this.stats.atk*Math.random();
+    if(pain < 0.50){
+      this.stats.hp = this.stats.hp - bonus/4;
+      return this.stats.atk+bonus;
+    }
+  }
 }
 
-
-
-
+let magic = {
+  hydroPump: function(){
+    if(this.stats.mp >= 8){
+      this.stats.mp = this.stats.mp - 8;
+      let tetradice = Math.random();
+      let pump = Math.celi(this.stats.sp/3)
+      if(tetradice <0.10){
+        return pump;
+      }
+      else if(tetradice <0.30){
+        return 2*pump
+    }
+    else if(tetradice <0.60){
+      return 3*pump
+  }
+  else{
+    return 4*pump
+  }
+}
 
 
 
