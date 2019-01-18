@@ -4,8 +4,8 @@ let p1Name = "Krackan";
 
 let p1Stats = {
   hp: 175,
-  mp: 50,
-  atk: 60,
+  mp: 90,
+  atk: 30,
   def: 40,
   sp: 60
 }
@@ -18,7 +18,7 @@ let p2Stats = {
   atk: 80,
   def: 40,
   sp: 30
-
+}
 
   //not finsihed
 
@@ -40,7 +40,7 @@ let p2Stats = {
     }
   }
 
-}
+},
 
 let physical = {
   razorPunch: function(){
@@ -55,8 +55,25 @@ let physical = {
       this.stats.hp = this.stats.hp - bonus/4;
       return this.stats.atk+bonus;
     }
+  },
+furyStrike: function(){
+  let baseDamage = this.stats.atk
+  let bonus = this.stats.atk*Math.random();
+  let pain = Math.random();
+  if(pain < 0.50){
+    this.stats.hp = this.stats.hp - (baseDamage + bonun)/2;
+    return baseDamage+bonus; 
   }
+},
+falconPunch: function(){
+  let baseDamage = this.stats.atk*0.5 
+  let bonus = 0.75*this.stats.atk*Math.random();
+  return baseDamage + bonus;
 }
+},
+
+
+
 
 let magic = {
   hydroPump: function(){
@@ -77,6 +94,12 @@ let magic = {
     return 4*pump
   }
 }
+  },
+  hyperBeam: function(){
+    
+  }
+  
+  
 
 
 
@@ -89,8 +112,7 @@ let magic = {
 
 
 
-
-
+}
 
 let p1Pack = [2,2,1,0,1,1,0,0];
 
