@@ -74,7 +74,6 @@ falconPunch: function(){
 
 
 
-
 let magic = {
   hydroPump: function(){
     if(this.stats.mp >= 8){
@@ -96,10 +95,42 @@ let magic = {
 }
   },
   hyperBeam: function(){
-    
+    if(this.stats.mp >= 20){
+      this.stats.mp = this.stats.mp - 20;
+      let baseDamage = this.stats.sp 
+  let bonus = 1.5*this.stats.sp;
+  return baseDamage + bonus
   }
-  
-  
+},
+  lightingSlap: function(){
+    if(this.stats.mp >= 10){
+      this.stats.mp = this.stats.mp - 10;
+      let baseDamage = this.stats.atk*0.66 
+      let bonus = 1.5*this.stats.atk*Math.random();
+      return baseDamage + bonus
+  }
+}  
+}
+
+let weapon = {
+  swordSlash: function(){
+    if(this.stats.mp >= 10){
+      this.stats.mp = this.stats.mp - 10;
+      let tetradice = Math.random();
+      let slash = Math.celi(this.stats.atk/3)
+      if(tetradice <0.10){
+        return slash;
+      }
+      else if(tetradice <0.30){
+        return 2*slash
+    }
+    else if(tetradice <0.60){
+      return 3*slash
+  }
+  else{
+    return 4*slash
+  }
+}
 
 
 
